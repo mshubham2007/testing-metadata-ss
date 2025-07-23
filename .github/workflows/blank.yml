@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Echo PR Merged
         run: |
-          echo "✅ PR was merged into the master"
+          echo "✅ PR was merged into the master branch."
           echo "🔖 Title: ${{ github.event.pull_request.title }}"
           echo "🔁 Merged by: ${{ github.event.pull_request.merged_by.login }}"
 
