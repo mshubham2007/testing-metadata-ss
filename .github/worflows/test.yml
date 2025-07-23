@@ -1,17 +1,22 @@
-name: On PR Merge to Master
+name: Run on PR Merge to Master
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - master
 
 jobs:
-  run-on-merge:
-    if: contains(github.event.head_commit.message, 'merge')
+  run-if-merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Echo PR Merge Message
-        run: echo "✅ A pull request was merged into master branch!"
+      - name: Echo on PR Merge
+        run: echo "✅ A PR was merged into master by ${{ github.actor }}"
+
+      - name: Show PR title
+        run: | 
+          echo "Title: ${{ github.event.pull_request.title }}"
