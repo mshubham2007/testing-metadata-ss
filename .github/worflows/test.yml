@@ -1,6 +1,10 @@
 name: Run on PR Merge to Master
+
 on:
-  push:
+  pull_request:
+    branches:
+      - master
+    types: [closed]
 
 jobs:
   run-if-merged:
