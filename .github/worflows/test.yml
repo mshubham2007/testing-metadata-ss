@@ -19,3 +19,12 @@ jobs:
           echo "✅ PR was merged into the master"
           echo "🔖 Title: ${{ github.event.pull_request.title }}"
           echo "🔁 Merged by: ${{ github.event.pull_request.merged_by.login }}"
+
+  another-job:
+    if: ${{ github.event.pull_request.merged == false }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Another Job
+        run: |
+          echo "This is another job that runs only if the PR was merged into master."
+          echo "You can add more steps here as needed."
