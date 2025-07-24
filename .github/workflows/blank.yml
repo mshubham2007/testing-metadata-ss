@@ -1,24 +1,19 @@
 name: Run on PR Merge to Master
 
 on:
-  pull_request:
+  push:
     branches:
       - master
-    types: [closed]
 
 jobs:
   run-if-merged:
-    if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
     steps:
       - name: Echo PR Merged
         run: |
           echo "✅ PR was merged into the master branch."
-          echo "🔖 Title: ${{ github.event.pull_request.title }}"
-          echo "🔁 Merged by: ${{ github.event.pull_request.merged_by.login }}"
 
   another-job:
-    if: ${{ github.event.pull_request.merged == false }}
     runs-on: ubuntu-latest
     steps:
       - name: Run Another Job
