@@ -19,4 +19,3 @@ jobs:
       - name: Run Another Job
         run: |
           echo "This is another job that runs only if the PR was merged into master."
-          echo "You can add more steps here as needed."
